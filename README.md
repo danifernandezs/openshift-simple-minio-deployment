@@ -7,6 +7,10 @@ Repo to store the minimal required yaml files to deploy minio at an OCP cluster
 bash bootstrap.sh
 ````
 
+The admin user and password it's configured directly as environment variables at the deployment resource.<br>
+username: admin<br>
+password: RedHat1!
+
 # Deployed resources
 
 - MinIO namespace
