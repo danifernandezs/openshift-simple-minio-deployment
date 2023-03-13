@@ -18,6 +18,9 @@ spec:
       labels:
         app.kubernetes.io/name: minio
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
       - command:
         - /bin/sh
@@ -28,7 +31,7 @@ spec:
           value: admin
         - name: MINIO_SECRET_KEY
           value: RedHat1!
-        image:  quay.io/minio/minio:RELEASE.2022-03-22T02-05-10Z
+        image:  quay.io/minio/minio:RELEASE.2023-03-09T23-16-13Z
         name: minio
         ports:
         - containerPort: 9000
@@ -38,6 +41,12 @@ spec:
         volumeMounts:
         - mountPath: /storage
           name: storage
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+              - ALL
+          runAsNonRoot: true
       volumes:
       - name: storage
         persistentVolumeClaim:
