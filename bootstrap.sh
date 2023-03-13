@@ -62,12 +62,12 @@ while true; do
                 echo "========================================"
                 echo "MinIO WEBUI Route."
                 echo "========================================"
-                oc get route minio-webui -n minio -o 'jsonpath={..spec.host}'
+                echo "https://"$(oc get route minio-webui -n minio -o 'jsonpath={..spec.host}')
                 echo ""
                 echo "========================================"
                 echo "MinIO API Route."
                 echo "========================================"
-                oc get route minio-api -n minio -o 'jsonpath={..spec.host}'
+                echo "https://"$(oc get route minio-api -n minio -o 'jsonpath={..spec.host}')
                 echo ""
                 echo "========================================"
 
